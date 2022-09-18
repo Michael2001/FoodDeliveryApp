@@ -13,7 +13,6 @@ public class FragmentSpecials extends Fragment {
 
     public FragmentSpecials() {}
 
-
     public static FragmentSpecials newInstance() {
         return new FragmentSpecials();
     }
@@ -28,7 +27,6 @@ public class FragmentSpecials extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_specials, container, false);
-
 
         return view;
     }

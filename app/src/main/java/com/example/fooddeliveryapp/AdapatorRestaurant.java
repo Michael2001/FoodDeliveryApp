@@ -1,5 +1,6 @@
 package com.example.fooddeliveryapp;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -15,7 +19,8 @@ public class AdapatorRestaurant extends RecyclerView.Adapter<AdapatorRestaurant.
 {
     RestaurantStructure dataHolder;
 
-    public AdapatorRestaurant(RestaurantStructure dataHolder) {
+    public AdapatorRestaurant(RestaurantStructure dataHolder)
+    {
         this.dataHolder = dataHolder;
     }
 
@@ -31,6 +36,16 @@ public class AdapatorRestaurant extends RecyclerView.Adapter<AdapatorRestaurant.
     {
         holder.restaurantImg.setImageResource(dataHolder.get(position).getImgUrl());
         holder.restaurantName.setText(dataHolder.get(position).getName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                FragmentRestaurant fragmentRestaurant = new FragmentRestaurant(dataHolder.get(holder.getAbsoluteAdapterPosition()));
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentRestaurant).addToBackStack(null).commit();
+            }
+        });
     }
 
     @Override
@@ -38,7 +53,7 @@ public class AdapatorRestaurant extends RecyclerView.Adapter<AdapatorRestaurant.
         return dataHolder.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder  {
         public ImageView restaurantImg;
         public TextView restaurantName;
 

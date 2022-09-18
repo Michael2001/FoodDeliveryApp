@@ -1,25 +1,27 @@
 package com.example.fooddeliveryapp;
 
+import java.util.List;
+
 public class Restaurant {
 
     private String name;
     private final int imgUrl;
-    private Menu menu;
+    private List<MenuItem> menuList;
 
-    public Restaurant(String name) {
-        this.name = name;
-        this.imgUrl = 0;
-        this.menu = null;
-    }
-
-    public Restaurant(String name, int imgUrl, Menu menu) {
+    public Restaurant(String name, int imgUrl) {
         this.name = name;
         this.imgUrl = imgUrl;
-        this.menu = menu;
+        this.menuList = null;
+    }
+
+    public Restaurant(String name, int imgUrl, List<MenuItem> menuList) {
+        this.name = name;
+        this.imgUrl = imgUrl;
+        this.menuList = menuList;
     }
 
     public String getName() {return name;}
     public int getImgUrl() {return imgUrl;}
-    public Menu getMenu() {return menu;}
+    public List<MenuItem> getMenuList() {return menuList;}
 
 }

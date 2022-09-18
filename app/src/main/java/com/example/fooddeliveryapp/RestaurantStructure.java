@@ -1,22 +1,119 @@
 package com.example.fooddeliveryapp;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class RestaurantStructure {
     private List<Restaurant> restaurantList = Arrays.asList(new Restaurant[] {
-            new Restaurant("Jill's Catering", R.drawable.restaurant001, null),
-            new Restaurant("Burgers are Us", R.drawable.restaurant002, null),
-            new Restaurant("John's Italian", R.drawable.restaurant003, null),
-            new Restaurant("Steak and Wine House", R.drawable.restaurant004, null),
-            new Restaurant("Rondo Lunch Bar", R.drawable.restaurant005, null),
-            new Restaurant("Fresh Farms Produce", R.drawable.restaurant006, null),
-            new Restaurant("Soup House", R.drawable.restaurant007, null),
-            new Restaurant("JCA Noodle Bar", R.drawable.restaurant008, null),
-            new Restaurant("Jim's Fish and Chips", R.drawable.restaurant009, null),
-            new Restaurant("Su Sushi", R.drawable.restaurant010, null),
-            new Restaurant("Dumping Dons", R.drawable.restaurant011, null),
-            new Restaurant("Desert Central", R.drawable.restaurant012, null),
+            new Restaurant("Jill's Catering", R.drawable.restaurant001, Arrays.asList(new MenuItem[] {
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001)
+            })),
+            new Restaurant("Burgers are Us", R.drawable.restaurant002, Arrays.asList(new MenuItem[] {
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001)
+            })),
+            new Restaurant("John's Italian", R.drawable.restaurant003, Arrays.asList(new MenuItem[] {
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001)
+            })),
+            new Restaurant("Steak and Wine House", R.drawable.restaurant004, Arrays.asList(new MenuItem[] {
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001)
+            })),
+            new Restaurant("Rondo Lunch Bar", R.drawable.restaurant005, Arrays.asList(new MenuItem[] {
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001)
+            })),
+            new Restaurant("Fresh Farms Produce", R.drawable.restaurant006, Arrays.asList(new MenuItem[] {
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001)
+            })),
+            new Restaurant("Soup House", R.drawable.restaurant007, Arrays.asList(new MenuItem[] {
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001)
+            })),
+            new Restaurant("JCA Noodle Bar", R.drawable.restaurant008, Arrays.asList(new MenuItem[] {
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001)
+            })),
+            new Restaurant("Jim's Fish and Chips", R.drawable.restaurant009, Arrays.asList(new MenuItem[] {
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001)
+            })),
+            new Restaurant("Su Sushi", R.drawable.restaurant010, Arrays.asList(new MenuItem[] {
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001)
+            })),
+            new Restaurant("Dumping Dons", R.drawable.restaurant011, Arrays.asList(new MenuItem[] {
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001)
+            })),
+            new Restaurant("Desert Central", R.drawable.restaurant012, Arrays.asList(new MenuItem[] {
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001)
+            })),
     });
 
 
@@ -41,3 +138,4 @@ public class RestaurantStructure {
 
     public void remove(int i) { restaurantList.remove((i)); }
 }
+

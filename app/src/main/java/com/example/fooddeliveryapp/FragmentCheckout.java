@@ -12,13 +12,10 @@ public class FragmentCheckout extends Fragment {
 
     private TextView checkoutTag;
 
-    public FragmentCheckout() {
-        // Required empty public constructor
-    }
+    public FragmentCheckout() {}
 
-    public static FragmentCheckout newInstance(String param1, String param2) {
-        FragmentCheckout fragment = new FragmentCheckout();
-        return fragment;
+    public static FragmentCheckout newInstance() {
+        return new FragmentCheckout();
     }
 
     @Override
@@ -31,7 +28,6 @@ public class FragmentCheckout extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_checkout, container, false);
-
         checkoutTag = (TextView) view.findViewById(R.id.checkoutTag);
 
         return view;
