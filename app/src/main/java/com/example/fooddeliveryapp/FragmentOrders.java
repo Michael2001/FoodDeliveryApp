@@ -8,17 +8,14 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-public class FragmentHistory extends Fragment {
+public class FragmentOrders extends Fragment {
 
     private TextView historyTag;
 
-    public FragmentHistory() {
-        // Required empty public constructor
-    }
+    public FragmentOrders() {}
 
-    public static FragmentHistory newInstance(String param1, String param2) {
-        FragmentHistory fragment = new FragmentHistory();
-        return fragment;
+    public static FragmentOrders newInstance() {
+        return new FragmentOrders();
     }
 
     @Override
@@ -31,7 +28,7 @@ public class FragmentHistory extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_history, container, false);
+        View view = inflater.inflate(R.layout.fragment_orders, container, false);
 
         historyTag = (TextView) view.findViewById(R.id.historyTag);
 
