@@ -7,10 +7,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 public class FragmentExplore extends Fragment {
 
+    RecyclerView recyclerView;
+    RestaurantStructure dataHolder = RestaurantStructure.get();
 
     public FragmentExplore() {
         // Required empty public constructor
@@ -30,6 +34,9 @@ public class FragmentExplore extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_explore, container, false);
+        recyclerView = view.findViewById(R.id.restaurantRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(new AdapatorRestaurant(dataHolder));
 
         return view;
     }
