@@ -1,8 +1,13 @@
 package com.example.fooddeliveryapp;
 
 import android.os.Bundle;
+import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,20 +16,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        BottomNavigationView nav = findViewById(R.id.nav);
+        nav.setOnNavigationItemSelectedListener(navListener);
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentSpecials()).commit();
 
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentNav nav = (FragmentNav) fm.findFragmentById(R.id.nav);
-
-        FragmentSpecials specials = (FragmentSpecials) fm.findFragmentById(R.id.specials);
-
-        if(nav == null) {
-            nav = FragmentNav.newInstance();
-            fm.beginTransaction().add(R.id.nav, nav).commit();
-        }
-        if(specials == null) {
-            specials = FragmentSpecials.newInstance();
-            fm.beginTransaction().add(R.id.specials, specials).commit();
-        }
     }
-}
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                    Fragment selectedFragment = null;
+
+                    switch(menuItem.getItemId()) {
+                        case R.id.specials:
+                            selectedFragment = new FragmentSpecials();
+                            break;
+                        case R.id.explore:
+                            selectedFragment = new FragmentExplore();
+                            break;
+                        case R.id.checkout:
+                            selectedFragment = new FragmentCheckout();
+                            break;
+                        case R.id.orders:
+                            selectedFragment = new FragmentOrders();
+                            break;
+                    }
+
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                    return true;
+                }
+            };
+    }
