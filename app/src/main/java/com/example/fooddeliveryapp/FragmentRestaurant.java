@@ -23,13 +23,14 @@ public class FragmentRestaurant extends Fragment {
     public int image;
     public String name;
     private List<MenuItem> menuList;
-    RecyclerView recyclerView;
+    Restaurant restaurant;
 
 
     public FragmentRestaurant(Restaurant restaurant) {
         name = restaurant.getName();
         image = restaurant.getImgUrl();
         menuList = restaurant.getMenuList();
+        this.restaurant = restaurant;
     }
 
     @Override
@@ -42,16 +43,9 @@ public class FragmentRestaurant extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.template_menu, container, false);
-
-//        TextView restaurantName = (TextView) view.findViewById(R.id.restaurantName);
-//        ImageView restaurantImg = (ImageView) view.findViewById(R.id.restaurantImage);
         RecyclerView recyclerView = view.findViewById(R.id.menuRecyclerView);
-
-//        restaurantName.setText(name);
-//        restaurantImg.setImageResource(image);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(new AdaptorMenuItem(menuList));
+        recyclerView.setAdapter(new AdaptorMenuItem(menuList, restaurant));
 
         return view;
     }

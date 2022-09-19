@@ -5,24 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-<!--    <ImageView-->
-<!--        android:id="@+id/restaurantImage"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="250dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/restaurantName"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="5dp"-->
-<!--        android:layout_marginTop="5dp"-->
-<!--        android:text="Restaurant Name"-->
-<!--        android:textSize="30dp"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/restaurantImage"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/restaurantImage" />-->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/menuRecyclerView"
         android:layout_width="match_parent"

@@ -42,7 +42,7 @@ public class AdapatorRestaurant extends RecyclerView.Adapter<AdapatorRestaurant.
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                FragmentRestaurant fragmentRestaurant = new FragmentRestaurant(dataHolder.get(holder.getAbsoluteAdapterPosition()));
+                FragmentRestaurant fragmentRestaurant = new FragmentRestaurant(dataHolder.get(position));
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentRestaurant).addToBackStack(null).commit();
             }
         });
