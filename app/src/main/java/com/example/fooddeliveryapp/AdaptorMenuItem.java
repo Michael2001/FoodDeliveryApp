@@ -50,6 +50,8 @@ public class AdaptorMenuItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
         } else if(holder instanceof ItemViewHolder) {
             final ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
 
+            position--;
+
             itemViewHolder.foodImg.setImageResource(menuList.get(position).getFoodImg());
             itemViewHolder.foodName.setText(menuList.get(position).getFoodName());
             itemViewHolder.foodDescription.setText(menuList.get(position).getFoodDescription());

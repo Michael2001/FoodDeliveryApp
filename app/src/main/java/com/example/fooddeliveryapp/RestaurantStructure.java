@@ -7,8 +7,9 @@ import java.util.List;
 public class RestaurantStructure {
     private List<Restaurant> restaurantList = Arrays.asList(new Restaurant[] {
             new Restaurant("Jill's Catering", R.drawable.restaurant001, Arrays.asList(new MenuItem[] {
-                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
-                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "12 pack of delicious beef, chicken, mustard and our speical dressing", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Tomato and Chess Sandwich", "12 pack of delicious tomato, cheese, mustard and our speical dressing", "$25.00", R.drawable.restaurant001),
+                    new MenuItem("Beef and Chicken Sandwich", "12 pack of delicious beef, chicken, mustard and our speical dressing", "$25.00", R.drawable.restaurant001),
                     new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
                     new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
                     new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
