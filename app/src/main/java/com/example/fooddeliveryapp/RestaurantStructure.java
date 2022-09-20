@@ -62,7 +62,7 @@ public class RestaurantStructure {
                     new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001)
             })),
             new Restaurant("Soup House", R.drawable.restaurant007, Arrays.asList(new MenuItem[] {
-                    new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
+                    new MenuItem("Tomato Soup", "Delicious tomato soup with a fresh garnish of basil and himalayan salt", "$8.00", R.drawable.soup001),
                     new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
                     new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
                     new MenuItem("Beef and Chicken Sandwich", "Braized beef and chicken", "$13.00", R.drawable.restaurant001),
