@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class FragmentExplore extends Fragment {
 
     RecyclerView recyclerView;
-    RestaurantStructure dataHolder = RestaurantStructure.get();
+    public static RestaurantStructure dataHolder = RestaurantStructure.get();
 
     public FragmentExplore() {
         // Required empty public constructor
@@ -42,4 +42,6 @@ public class FragmentExplore extends Fragment {
 
         return view;
     }
+
+    public static RestaurantStructure getDataHolder() {return dataHolder;}
 }

@@ -1,13 +1,12 @@
 package com.example.fooddeliveryapp;
 
 import android.view.LayoutInflater;
-import android.view.PointerIcon;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -17,7 +16,15 @@ public class AdaptorMenuItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
     List<MenuItem> menuList;
-    Restaurant restaurant;
+    public static Restaurant restaurant;
+
+    public static void increment (String item) {
+        AdapatorRestaurant.incrementRestrauntItem(item);
+    }
+
+    public static void decrease (String item) {
+        AdapatorRestaurant.decreaseRestrauntItem(item);
+    }
 
     public AdaptorMenuItem(List<MenuItem> menuList, Restaurant restaurant) {
         this.menuList = menuList;
@@ -53,9 +60,18 @@ public class AdaptorMenuItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
             position--;
 
             itemViewHolder.foodImg.setImageResource(menuList.get(position).getFoodImg());
+            itemViewHolder.imgSource = menuList.get(position).getFoodImg();
             itemViewHolder.foodName.setText(menuList.get(position).getFoodName());
             itemViewHolder.foodDescription.setText(menuList.get(position).getFoodDescription());
             itemViewHolder.foodPrice.setText(menuList.get(position).getFoodPrice());
+            itemViewHolder.cartCount.setText(menuList.get(position).getNum());
+            if (menuList.get(position).getSpecial()){
+                itemViewHolder.special.setText("On Special!");
+            }
+            else
+            {
+                itemViewHolder.special.setText("Regular Price");
+            }
         }
     }
 
@@ -77,14 +93,66 @@ public class AdaptorMenuItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
         public TextView foodPrice;
         public TextView foodName;
         public TextView foodDescription;
+        public TextView cartCount;
+        public TextView special;
+        public Button addButton;
+        public Button takeButton;
+        public int imgSource;
+        public MenuItem temp;
+
+
 
         public ItemViewHolder(View view) {
             super(view);
+            imgSource = 0;
             foodImg = itemView.findViewById(R.id.foodImage);
             foodName = itemView.findViewById(R.id.foodName);
             foodPrice = itemView.findViewById(R.id.foodPrice);
             foodDescription = itemView.findViewById(R.id.foodDescription);
+            cartCount = itemView.findViewById(R.id.count);
+            addButton = (Button)view.findViewById(R.id.plus);
+            takeButton = (Button)view.findViewById(R.id.minus);
+            special = itemView.findViewById(R.id.special);
+
+            addButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view){
+                    AdaptorMenuItem.increment(foodName.getText().toString());
+
+                    if (cartCount != null){
+                        int cnt = Integer.parseInt(cartCount.getText().toString());
+                        if (cnt != 0){
+                            cnt++;
+                        }
+                        cartCount.setText(Integer.toString(cnt));
+
+                    }
+                }
+
+                //Make a call, send the information to the Order List
+            });
+
+            takeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view){
+
+                    AdaptorMenuItem.decrease(foodName.getText().toString());
+
+                    if (cartCount != null){
+                        int cnt = Integer.parseInt(cartCount.getText().toString());
+                        if (cnt != 0){
+                            cnt--;
+                        }
+                        cartCount.setText(Integer.toString(cnt));
+
+                    }
+                }
+            });
+
+
+
         }
+
     }
 
     public class HeaderViewHolder extends RecyclerView.ViewHolder {

@@ -56,13 +56,12 @@
         app:layout_constraintTop_toBottomOf="@+id/foodDescription">
 
 
-
         <Button
             android:id="@+id/minus"
             android:layout_width="48dp"
             android:layout_height="30dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/round_button"
-
             android:text="-"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
@@ -91,10 +90,19 @@
             app:layout_constraintTop_toTopOf="@+id/minus" />
 
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
+    <TextView
+        android:id="@+id/special"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="52dp"
+        android:textColor="@color/black"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/foodDescription"
+        app:layout_constraintTop_toTopOf="@+id/foodImage" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

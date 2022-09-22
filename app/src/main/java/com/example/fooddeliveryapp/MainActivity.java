@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new FragmentExplore();
                             break;
                         case R.id.checkout:
-                            selectedFragment = new FragmentCheckout();
+                            selectedFragment = new FragmentCheckout(FragmentExplore.getDataHolder());
                             break;
                         case R.id.orders:
                             selectedFragment = new FragmentOrders();

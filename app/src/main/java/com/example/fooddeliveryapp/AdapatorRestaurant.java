@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class AdapatorRestaurant extends RecyclerView.Adapter<AdapatorRestaurant.MyViewHolder>
 {
-    RestaurantStructure dataHolder;
+    public static RestaurantStructure dataHolder;
 
     public AdapatorRestaurant(RestaurantStructure dataHolder)
     {
@@ -31,6 +31,14 @@ public class AdapatorRestaurant extends RecyclerView.Adapter<AdapatorRestaurant.
         return new MyViewHolder(view);
     }
 
+
+    public static void incrementRestrauntItem(String item){
+        dataHolder.incramentItem(item);
+    }
+
+    public static void decreaseRestrauntItem(String item){
+        dataHolder.decreaseItem(item);
+    }
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
