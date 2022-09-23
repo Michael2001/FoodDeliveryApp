@@ -6,16 +6,22 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
+
 public class FragmentLogin extends Fragment implements View.OnClickListener {
+
+    public static User USER;
 
     private TextInputLayout inputEmail;
     private TextInputLayout inputPassword;
@@ -26,8 +32,8 @@ public class FragmentLogin extends Fragment implements View.OnClickListener {
     private Button loginButton;
     private TextView signUpLink;
 
-    private UserDBHelper dbHelper;
-    private InputValidation inputValidation;
+    private Validation validation;
+    private UserDBModel userDBModel;
 
     public FragmentLogin() {
         // Required empty public constructor
@@ -54,8 +60,11 @@ public class FragmentLogin extends Fragment implements View.OnClickListener {
         loginButton.setOnClickListener(this);
         signUpLink.setOnClickListener(this);
 
-        dbHelper = new UserDBHelper(getActivity());
-//        inputValidation = new InputValidation(getActivity());
+        validation = new Validation(getContext());
+        userDBModel = new UserDBModel();
+        USER = new User();
+
+        userDBModel.load(getContext());
 
         return view;
     }
@@ -65,6 +74,7 @@ public class FragmentLogin extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch(view.getId()) {
             case R.id.buttonLogin:
+                validateFromDB();
                 break;
             case R.id.linkRegister:
                 FragmentSignUp fragmentSignUp = new FragmentSignUp();
@@ -77,6 +87,40 @@ public class FragmentLogin extends Fragment implements View.OnClickListener {
                 break;
             default:
                 break;
+        }
+    }
+
+    private void validateFromDB() {
+        if(!validation.isFieldComplete(inputEditEmail, inputEmail, "Email is not in correct format or is invalid")) {return; };
+        if(!validation.isFieldComplete(inputEditPassword, inputPassword, "Email is not in correct format or is invalid")) {return; };
+
+        if(!userDBModel.validateUser(inputEditEmail.getText().toString().trim(), inputEditPassword.toString().trim())) {
+            ArrayList<User> userList = userDBModel.getAllUsers();
+            User foundUser = new User();
+
+            for (User user:
+            userList ) {
+                if(user.getEmail().equals(inputEditEmail.getText().toString().trim())) {
+                    foundUser = user;
+                }
+            }
+
+            Log.d("TAG", foundUser.getEmail());
+
+            Toast toast =  Toast.makeText(getContext(), "Valid Login!", Toast.LENGTH_SHORT);
+            toast.show();
+
+            MainActivity.LOGGED = true;
+
+            FragmentCheckout fragmentCheckout = new FragmentCheckout(USER);
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.addToBackStack("xyz");
+            fragmentTransaction.hide(FragmentLogin.this);
+            fragmentTransaction.add(R.id.fragment_container, fragmentCheckout);
+            fragmentTransaction.commit();
+
+            Log.d("TAG", "SUCCESS");
         }
     }
 }

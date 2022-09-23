@@ -9,10 +9,17 @@ public class UserDBCursor extends CursorWrapper {
         super(cursor);
     }
 
-    public User getUsers(){
-        String id = getString((getColumnIndex(userTable.Cols.ID)));
-        String email = getString(getColumnIndex(userTable.Cols.EMAIL));
-        String password = getString(getColumnIndex(userTable.Cols.PASSWORD));
-        return new User(id, email,password);
+    public User getUser()
+    {
+        User user = new User();
+
+        String id = String.valueOf(getInt(getColumnIndex(userTable.Cols.COL_USER_ID)));
+        String email = getString(getColumnIndex(userTable.Cols.COL_USER_EMAIL));
+        String password = getString(getColumnIndex(userTable.Cols.COL_USER_PASSWORD));
+
+        user.setId(id);
+        user.setEmail(email);
+        user.setPassword(password);
+        return user;
     }
 }

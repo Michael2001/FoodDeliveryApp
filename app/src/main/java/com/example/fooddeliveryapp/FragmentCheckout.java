@@ -12,8 +12,10 @@ import android.view.ViewGroup;
 public class FragmentCheckout extends Fragment {
 
     private Cart cart;
+    private User user;
 
-    public FragmentCheckout() {
+    public FragmentCheckout(User user) {
+        this.user = user;
     }
 
     @Override

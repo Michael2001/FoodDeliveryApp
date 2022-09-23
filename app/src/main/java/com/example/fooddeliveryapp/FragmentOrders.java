@@ -11,11 +11,10 @@ import androidx.fragment.app.Fragment;
 public class FragmentOrders extends Fragment {
 
     private TextView historyTag;
+    private User user;
 
-    public FragmentOrders() {}
-
-    public static FragmentOrders newInstance() {
-        return new FragmentOrders();
+    public FragmentOrders(User user) {
+        this.user = user;
     }
 
     @Override

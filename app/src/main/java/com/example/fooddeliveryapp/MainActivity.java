@@ -9,7 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static boolean logged = false;
+    public static boolean LOGGED = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +36,18 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new FragmentExplore();
                             break;
                         case R.id.checkout:
-                            if(logged == false){
+                            if(LOGGED == false){
                                 selectedFragment = new FragmentLogin();
                             } else {
-                                selectedFragment = new FragmentCheckout();
+                                selectedFragment = new FragmentCheckout(FragmentLogin.USER);
                             }
                             break;
                         case R.id.orders:
-                            if(logged == false) {
+                            if(LOGGED == false) {
                                 selectedFragment = new FragmentLogin();
                             } else
                             {
-                                selectedFragment = new FragmentOrders();
+                                selectedFragment = new FragmentOrders(FragmentLogin.USER);
                             }
                             break;
                     }

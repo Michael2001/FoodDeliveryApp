@@ -9,19 +9,20 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutEmail"
+            android:id="@+id/textInputLayoutEmailSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputEditTextEmail"
+                android:id="@+id/textInputEditTextEmailSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
@@ -31,14 +32,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutPassword"
+            android:id="@+id/textInputLayoutPasswordSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail">
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmailSignUp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputEditTextPassword"
+                android:id="@+id/textInputEditTextPasswordSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
@@ -48,14 +49,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutConfirmPassword"
+            android:id="@+id/textInputLayoutConfirmPasswordSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword">
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPasswordSignUp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputEditTextConfirmPassword"
+                android:id="@+id/textInputEditTextConfirmPasswordSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Confirm Password"
@@ -64,8 +65,8 @@
                 android:textColor="@android:color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/appCompatButtonRegister"
+        <Button
+            android:id="@+id/buttonSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -73,17 +74,18 @@
             android:backgroundTint="@color/purple_200"
             android:text="Sign Up"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutConfirmPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutConfirmPasswordSignUp" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextViewLoginLink"
+        <TextView
+            android:id="@+id/linkLogIn"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="Already a member? Login"
             android:textSize="16dp"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatButtonRegister" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonSignUp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
