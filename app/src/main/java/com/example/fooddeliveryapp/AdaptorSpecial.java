@@ -82,22 +82,16 @@ public class AdaptorSpecial extends RecyclerView.Adapter<RecyclerView.ViewHolder
             takeButton = (Button)view.findViewById(R.id.minus);
             special = itemView.findViewById(R.id.special);
 
-
-
-
             addButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view){
-                    AdaptorCart.increment(foodName.getText().toString());
+                    MenuItem item = RestaurantStructure.get().findMenuItem(foodName.getText().toString());
 
-                    if (cartCount != null){
-                        int cnt = Integer.parseInt(cartCount.getText().toString());
-                        if (cnt != 0){
-                            cnt++;
-                        }
-                        cartCount.setText(Integer.toString(cnt));
+                    item.incrementNum();
 
-                    }
+                    int count = Integer.parseInt(item.getNum());
+
+                    cartCount.setText(String.valueOf(count));
                 }
 
                 //Make a call, send the information to the Order List
@@ -107,32 +101,18 @@ public class AdaptorSpecial extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 @Override
                 public void onClick(View view){
 
-                    AdaptorCart.decrease(foodName.getText().toString());
+                    MenuItem item = RestaurantStructure.get().findMenuItem(foodName.getText().toString());
 
-                    if (cartCount != null){
-                        int cnt = Integer.parseInt(cartCount.getText().toString());
-                        if (cnt != 0){
-                            cnt--;
-                        }
-                        cartCount.setText(Integer.toString(cnt));
+                    int count = Integer.parseInt(item.getNum());
 
+                    if(count > 0) {
+                        item.decreaseNum();
+                        count = Integer.parseInt(item.getNum());
                     }
+
+                    cartCount.setText(String.valueOf(count));
                 }
             });
-
-
-
         }
-
     }
-
-    public static void increment (String item) {
-        AdapatorRestaurant.incrementRestrauntItem(item);
-    }
-
-    public static void decrease (String item) {
-        AdapatorRestaurant.decreaseRestrauntItem(item);
-    }
-
-
 }

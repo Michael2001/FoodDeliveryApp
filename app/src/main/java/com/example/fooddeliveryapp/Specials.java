@@ -24,11 +24,8 @@ public class Specials {
                     specialList.add(temp.getMenuList().get(yy));
                 }
             }
-
         }
-
     }
-
 
     public List<MenuItem> getSpecialList() {return specialList;}
 

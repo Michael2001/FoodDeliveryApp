@@ -2,6 +2,7 @@ package com.example.fooddeliveryapp;
 
 public class MenuItem
 {
+    private int id;
     private String foodName;
     private String foodDescription;
     private String foodPrice;
@@ -9,8 +10,9 @@ public class MenuItem
     private int num;
     private boolean special;
 
-    public MenuItem(String foodName, String foodDescription, String foodPrice, int foodImg, int inNum, boolean special)
+    public MenuItem(int id, String foodName, String foodDescription, String foodPrice, int foodImg, int inNum, boolean special)
     {
+        this.id = id;
         this.foodName = foodName;
         this.foodDescription = foodDescription;
         this.foodPrice = foodPrice;
@@ -19,7 +21,7 @@ public class MenuItem
         this.special = special;
     }
 
-    public void incramentNum()
+    public void incrementNum()
     {
         num++;
     }
@@ -38,5 +40,7 @@ public class MenuItem
     public int getNumItems() {return num;}
     public void setSpecial(){this.special = true;}
     public void setPrice(String inPrice){this.foodPrice = inPrice;}
+    public void setId(int id) {this.id=id;}
+    public int getId() {return id;}
 
 }

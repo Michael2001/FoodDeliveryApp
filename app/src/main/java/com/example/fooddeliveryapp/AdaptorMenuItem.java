@@ -1,5 +1,6 @@
 package com.example.fooddeliveryapp;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -15,16 +17,9 @@ public class AdaptorMenuItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
 {
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
+
     List<MenuItem> menuList;
     public static Restaurant restaurant;
-
-    public static void increment (String item) {
-        AdapatorRestaurant.incrementRestrauntItem(item);
-    }
-
-    public static void decrease (String item) {
-        AdapatorRestaurant.decreaseRestrauntItem(item);
-    }
 
     public AdaptorMenuItem(List<MenuItem> menuList, Restaurant restaurant) {
         this.menuList = menuList;
@@ -48,6 +43,7 @@ public class AdaptorMenuItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position)
     {
+
         if(holder instanceof HeaderViewHolder) {
             HeaderViewHolder headerViewHolder = (HeaderViewHolder) holder;
 
@@ -57,14 +53,13 @@ public class AdaptorMenuItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
         } else if(holder instanceof ItemViewHolder) {
             final ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
 
-            position--;
-
             itemViewHolder.foodImg.setImageResource(menuList.get(position).getFoodImg());
             itemViewHolder.imgSource = menuList.get(position).getFoodImg();
             itemViewHolder.foodName.setText(menuList.get(position).getFoodName());
             itemViewHolder.foodDescription.setText(menuList.get(position).getFoodDescription());
             itemViewHolder.foodPrice.setText(menuList.get(position).getFoodPrice());
             itemViewHolder.cartCount.setText(menuList.get(position).getNum());
+
             if (menuList.get(position).getSpecial()){
                 itemViewHolder.special.setText("On Special!");
             }
@@ -98,7 +93,6 @@ public class AdaptorMenuItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
         public Button addButton;
         public Button takeButton;
         public int imgSource;
-        public MenuItem temp;
 
 
 
@@ -110,23 +104,20 @@ public class AdaptorMenuItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
             foodPrice = itemView.findViewById(R.id.foodPrice);
             foodDescription = itemView.findViewById(R.id.foodDescription);
             cartCount = itemView.findViewById(R.id.count);
-            addButton = (Button)view.findViewById(R.id.plus);
-            takeButton = (Button)view.findViewById(R.id.minus);
+            addButton = itemView.findViewById(R.id.plus);
+            takeButton = itemView.findViewById(R.id.minus);
             special = itemView.findViewById(R.id.special);
 
             addButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view){
-                    AdaptorMenuItem.increment(foodName.getText().toString());
+                    MenuItem item = RestaurantStructure.get().findMenuItem(foodName.getText().toString());
 
-                    if (cartCount != null){
-                        int cnt = Integer.parseInt(cartCount.getText().toString());
-                        if (cnt != 0){
-                            cnt++;
-                        }
-                        cartCount.setText(Integer.toString(cnt));
+                    item.incrementNum();
 
-                    }
+                    int count = Integer.parseInt(item.getNum());
+
+                    cartCount.setText(String.valueOf(count));
                 }
 
                 //Make a call, send the information to the Order List
@@ -136,23 +127,19 @@ public class AdaptorMenuItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 @Override
                 public void onClick(View view){
 
-                    AdaptorMenuItem.decrease(foodName.getText().toString());
+                    MenuItem item = RestaurantStructure.get().findMenuItem(foodName.getText().toString());
 
-                    if (cartCount != null){
-                        int cnt = Integer.parseInt(cartCount.getText().toString());
-                        if (cnt != 0){
-                            cnt--;
-                        }
-                        cartCount.setText(Integer.toString(cnt));
+                    int count = Integer.parseInt(item.getNum());
 
+                    if(count > 0) {
+                        item.decreaseNum();
+                        count = Integer.parseInt(item.getNum());
                     }
+
+                    cartCount.setText(String.valueOf(count));
                 }
             });
-
-
-
         }
-
     }
 
     public class HeaderViewHolder extends RecyclerView.ViewHolder {

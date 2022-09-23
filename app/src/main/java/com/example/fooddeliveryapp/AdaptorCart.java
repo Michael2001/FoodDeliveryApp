@@ -15,7 +15,6 @@ public class AdaptorCart extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     List<MenuItem> cartList;
     Cart cart;
-    public static Restaurant restaurant;
 
 
     public AdaptorCart(Cart inCart) {
@@ -40,6 +39,7 @@ public class AdaptorCart extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         itemViewHolder.foodDescription.setText(cartList.get(position).getFoodDescription());
         itemViewHolder.foodPrice.setText(cartList.get(position).getFoodPrice());
         itemViewHolder.cartCount.setText(cartList.get(position).getNum());
+
         if (cartList.get(position).getSpecial()){
             itemViewHolder.special.setText("On Special!");
         }
@@ -65,10 +65,7 @@ public class AdaptorCart extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public Button addButton;
         public Button takeButton;
         public int imgSource;
-        public MenuItem temp;
         public TextView special;
-
-
 
 
         public ItemViewHolder(View view) {
@@ -79,25 +76,20 @@ public class AdaptorCart extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             foodPrice = itemView.findViewById(R.id.foodPrice);
             foodDescription = itemView.findViewById(R.id.foodDescription);
             cartCount = itemView.findViewById(R.id.count);
-            addButton = (Button)view.findViewById(R.id.plus);
-            takeButton = (Button)view.findViewById(R.id.minus);
+            addButton = itemView.findViewById(R.id.plus);
+            takeButton = itemView.findViewById(R.id.minus);
             special = itemView.findViewById(R.id.special);
-
-
 
             addButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view){
-                    AdaptorCart.increment(foodName.getText().toString());
+                public void onClick(View view) {
+                    MenuItem item = RestaurantStructure.get().findMenuItem(foodName.getText().toString());
 
-                    if (cartCount != null){
-                        int cnt = Integer.parseInt(cartCount.getText().toString());
-                        if (cnt != 0){
-                            cnt++;
-                        }
-                        cartCount.setText(Integer.toString(cnt));
+                    item.incrementNum();
 
-                    }
+                    int count = Integer.parseInt(item.getNum());
+
+                    cartCount.setText(String.valueOf(count));
                 }
 
                 //Make a call, send the information to the Order List
@@ -105,34 +97,20 @@ public class AdaptorCart extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             takeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view){
+                public void onClick(View view) {
 
-                    AdaptorCart.decrease(foodName.getText().toString());
+                    MenuItem item = RestaurantStructure.get().findMenuItem(foodName.getText().toString());
 
-                    if (cartCount != null){
-                        int cnt = Integer.parseInt(cartCount.getText().toString());
-                        if (cnt != 0){
-                            cnt--;
-                        }
-                        cartCount.setText(Integer.toString(cnt));
+                    int count = Integer.parseInt(item.getNum());
 
+                    if (count > 0) {
+                        item.decreaseNum();
+                        count = Integer.parseInt(item.getNum());
                     }
+
+                    cartCount.setText(String.valueOf(count));
                 }
             });
-
-
-
         }
-
     }
-
-    public static void increment (String item) {
-        AdapatorRestaurant.incrementRestrauntItem(item);
-    }
-
-    public static void decrease (String item) {
-        AdapatorRestaurant.decreaseRestrauntItem(item);
-    }
-
-
 }

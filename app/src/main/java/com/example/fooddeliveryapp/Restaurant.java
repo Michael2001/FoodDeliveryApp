@@ -34,15 +34,11 @@ public class Restaurant {
 
     public void incrementItem(String item)
     {
-
         for (int yy =0; yy < menuList.size(); yy++){
             MenuItem tempItem = menuList.get(yy);
             if (tempItem.getFoodName().equals(item)){
-                tempItem.incramentNum();
+                tempItem.incrementNum();
             }
         }
-
-
     }
-
 }

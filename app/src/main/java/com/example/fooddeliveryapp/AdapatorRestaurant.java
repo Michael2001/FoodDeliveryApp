@@ -31,14 +31,6 @@ public class AdapatorRestaurant extends RecyclerView.Adapter<AdapatorRestaurant.
         return new MyViewHolder(view);
     }
 
-
-    public static void incrementRestrauntItem(String item){
-        dataHolder.incramentItem(item);
-    }
-
-    public static void decreaseRestrauntItem(String item){
-        dataHolder.decreaseItem(item);
-    }
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
@@ -46,11 +38,10 @@ public class AdapatorRestaurant extends RecyclerView.Adapter<AdapatorRestaurant.
         holder.restaurantName.setText(dataHolder.get(position).getName());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                FragmentRestaurant fragmentRestaurant = new FragmentRestaurant(dataHolder.get(position));
+                FragmentRestaurant fragmentRestaurant = new FragmentRestaurant(dataHolder.get(holder.getAbsoluteAdapterPosition()));
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentRestaurant).addToBackStack(null).commit();
             }
         });
