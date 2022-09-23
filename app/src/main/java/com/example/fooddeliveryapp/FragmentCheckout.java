@@ -7,20 +7,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import java.util.List;
 
 
 public class FragmentCheckout extends Fragment {
 
     private Cart cart;
 
-
-    public FragmentCheckout(RestaurantStructure inStructure) {
+    public FragmentCheckout() {
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -31,7 +30,6 @@ public class FragmentCheckout extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.menuRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(new AdaptorCart(cart));
-
         return view;
     }
 }

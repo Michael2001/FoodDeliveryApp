@@ -2,14 +2,14 @@ package com.example.fooddeliveryapp;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static boolean logged = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +36,19 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new FragmentExplore();
                             break;
                         case R.id.checkout:
-                            selectedFragment = new FragmentCheckout(FragmentExplore.getDataHolder());
+                            if(logged == false){
+                                selectedFragment = new FragmentLogin();
+                            } else {
+                                selectedFragment = new FragmentCheckout();
+                            }
                             break;
                         case R.id.orders:
-                            selectedFragment = new FragmentOrders();
+                            if(logged == false) {
+                                selectedFragment = new FragmentLogin();
+                            } else
+                            {
+                                selectedFragment = new FragmentOrders();
+                            }
                             break;
                     }
 

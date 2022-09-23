@@ -40,12 +40,8 @@ public class AdaptorSpecial extends RecyclerView.Adapter<RecyclerView.ViewHolder
         itemViewHolder.foodDescription.setText(specialList.get(position).getFoodDescription());
         itemViewHolder.foodPrice.setText(specialList.get(position).getFoodPrice());
         itemViewHolder.cartCount.setText(specialList.get(position).getNum());
-        if (specialList.get(position).getSpecial()){
+        if (specialList.get(position).getSpecial()) {
             itemViewHolder.special.setText("On Special!");
-        }
-        else
-        {
-            itemViewHolder.special.setText("Regular Price");
         }
 
     }
