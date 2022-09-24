@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                                 selectedFragment = new FragmentLogin();
                             } else
                             {
-                                selectedFragment = new FragmentOrders(FragmentLogin.USER);
+                                selectedFragment = new FragmentUserOrders();
                             }
                             break;
                     }

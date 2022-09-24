@@ -18,6 +18,10 @@ public class UserDBModel   {
         this.db = new UserDBHelper(context).getWritableDatabase();
     }
 
+    public void addOrder() {
+
+    }
+
     public void addUser(User user) {
         ContentValues cv = new ContentValues();
         cv.put(userTable.Cols.COL_USER_EMAIL, user.getEmail());
