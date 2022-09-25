@@ -13,7 +13,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
 
     private String CREATE_TABLE = "CREATE TABLE " + userTable.NAME + "("
             + userTable.Cols.COL_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + userTable.Cols.COL_USER_EMAIL + " TEXT," + userTable.Cols.COL_USER_PASSWORD + " TEXT" + ")";
+            + userTable.Cols.COL_USER_EMAIL + " TEXT," + userTable.Cols.COL_USER_PASSWORD + " TEXT," + userTable.Cols.COL_USER_ORDERS + " TEXT" + ")";
 
     public UserDBHelper(Context context) {
         super(context, DATABASE_NAME, null, VERSION);

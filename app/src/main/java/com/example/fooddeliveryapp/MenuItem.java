@@ -1,6 +1,6 @@
 package com.example.fooddeliveryapp;
 
-public class MenuItem
+public class MenuItem implements java.io.Serializable
 {
     private int id;
     private String foodName;

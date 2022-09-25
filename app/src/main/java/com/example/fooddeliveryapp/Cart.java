@@ -24,12 +24,8 @@ public class Cart {
                     cartList.add(temp.getMenuList().get(yy));
                 }
             }
-
         }
-
     }
 
-
     public List<MenuItem> getCartItems() {return cartList;}
-
 }

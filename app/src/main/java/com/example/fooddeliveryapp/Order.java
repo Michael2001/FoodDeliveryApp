@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.util.List;
 
-public class Order {
+public class Order implements java.io.Serializable {
     private String useremail;
     private String time;
     private List<MenuItem> orderedItems;

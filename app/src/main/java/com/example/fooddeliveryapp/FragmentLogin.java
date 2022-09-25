@@ -17,7 +17,11 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Base64;
 
 public class FragmentLogin extends Fragment implements View.OnClickListener {
 
@@ -81,7 +85,6 @@ public class FragmentLogin extends Fragment implements View.OnClickListener {
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.addToBackStack("xyz");
-                fragmentTransaction.hide(FragmentLogin.this);
                 fragmentTransaction.add(R.id.fragment_container, fragmentSignUp);
                 fragmentTransaction.commit();
                 break;
@@ -96,31 +99,48 @@ public class FragmentLogin extends Fragment implements View.OnClickListener {
 
         if(!userDBModel.validateUser(inputEditEmail.getText().toString().trim(), inputEditPassword.toString().trim())) {
             ArrayList<User> userList = userDBModel.getAllUsers();
-            User foundUser = new User();
 
             for (User user:
             userList ) {
                 if(user.getEmail().equals(inputEditEmail.getText().toString().trim())) {
-                    foundUser = user;
+
+                    Toast toast =  Toast.makeText(getContext(), "Valid Login!", Toast.LENGTH_SHORT);
+                    toast.show();
+
+                    MainActivity.LOGGED = true;
+                    USER = user;
+
+                    FragmentCheckout fragmentCheckout = new FragmentCheckout(USER);
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.addToBackStack("xyz");
+                    fragmentTransaction.hide(FragmentLogin.this);
+                    fragmentTransaction.add(R.id.fragment_container, fragmentCheckout);
+                    fragmentTransaction.commit();
+
+                    Log.d("TAG", "SUCCESS");
+                }
+                else {
+                    Toast toast =  Toast.makeText(getContext(), "Invalid Login Details!", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             }
-
-            Log.d("TAG", foundUser.getEmail());
-
-            Toast toast =  Toast.makeText(getContext(), "Valid Login!", Toast.LENGTH_SHORT);
-            toast.show();
-
-            MainActivity.LOGGED = true;
-
-            FragmentCheckout fragmentCheckout = new FragmentCheckout(USER);
-            FragmentManager fragmentManager = getFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.addToBackStack("xyz");
-            fragmentTransaction.hide(FragmentLogin.this);
-            fragmentTransaction.add(R.id.fragment_container, fragmentCheckout);
-            fragmentTransaction.commit();
-
-            Log.d("TAG", "SUCCESS");
         }
+    }
+
+
+    private OrderStructure stringToObj( String s ) {
+        try {
+            byte [] Byte_Data = Base64.getDecoder().decode( s );
+            ObjectInputStream ois = new ObjectInputStream( new ByteArrayInputStream(Byte_Data) );
+            OrderStructure orderStructure = (OrderStructure) ois.readObject();
+            ois.close();
+            return orderStructure;
+        } catch(IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

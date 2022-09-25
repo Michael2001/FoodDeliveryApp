@@ -34,7 +34,6 @@ public class AdaptorOrders extends RecyclerView.Adapter<AdaptorOrders.MyViewHold
         holder.userEmail.setText(dataHolder.get(position).getUseremail());
         holder.orderDate.setText(dataHolder.get(position).getOrderDate());
         holder.orderTotal.setText(dataHolder.get(position).returnPrice());
-        Log.i("Price",dataHolder.get(position).returnPrice());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
 
             @Override

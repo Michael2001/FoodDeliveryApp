@@ -8,7 +8,11 @@ import android.util.Log;
 
 import com.example.fooddeliveryapp.UserDBSchema.userTable;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Base64;
 
 public class UserDBModel   {
 
@@ -18,14 +22,11 @@ public class UserDBModel   {
         this.db = new UserDBHelper(context).getWritableDatabase();
     }
 
-    public void addOrder() {
-
-    }
-
     public void addUser(User user) {
         ContentValues cv = new ContentValues();
         cv.put(userTable.Cols.COL_USER_EMAIL, user.getEmail());
         cv.put(userTable.Cols.COL_USER_PASSWORD, user.getPassword());
+        cv.put(userTable.Cols.COL_USER_ORDERS, "");
 
         db.insert(userTable.NAME, null, cv);
     }
@@ -61,6 +62,15 @@ public class UserDBModel   {
         return false;
     }
 
+    public void updateUser(String id, String email, String password, String orders) {
+        ContentValues cv = new ContentValues();
+        cv.put(userTable.Cols.COL_USER_EMAIL, email);
+        cv.put(userTable.Cols.COL_USER_PASSWORD, password);
+        cv.put(userTable.Cols.COL_USER_ORDERS, orders);
+
+        db.update(userTable.NAME, cv, "user_id=?", new String[]{id});
+    }
+
     public ArrayList<User> getAllUsers() {
         ArrayList<User> userList = new ArrayList<>();
         Cursor cursor = db.query(userTable.NAME, null, null, null, null, null, null);
@@ -81,3 +91,5 @@ public class UserDBModel   {
         return userList;
     }
 }
+
+

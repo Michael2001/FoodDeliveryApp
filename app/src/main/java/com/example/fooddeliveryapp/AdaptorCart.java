@@ -16,7 +16,6 @@ public class AdaptorCart extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     List<MenuItem> cartList;
     Cart cart;
 
-
     public AdaptorCart(Cart inCart) {
         this.cart = inCart;
         this.cartList = inCart.getCartItems();
@@ -47,7 +46,6 @@ public class AdaptorCart extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         {
             itemViewHolder.special.setText("Regular Price");
         }
-
     }
 
     @Override
@@ -91,8 +89,6 @@ public class AdaptorCart extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
                     cartCount.setText(String.valueOf(count));
                 }
-
-                //Make a call, send the information to the Order List
             });
 
             takeButton.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +103,6 @@ public class AdaptorCart extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         item.decreaseNum();
                         count = Integer.parseInt(item.getNum());
                     }
-
                     cartCount.setText(String.valueOf(count));
                 }
             });

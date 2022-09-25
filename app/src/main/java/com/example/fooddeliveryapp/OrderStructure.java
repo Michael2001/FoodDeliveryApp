@@ -1,11 +1,14 @@
 package com.example.fooddeliveryapp;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderStructure {
-    private List<Order> orderList;
+public class OrderStructure implements java.io.Serializable {
 
+    private final static long serialVersionUID = 1;
+
+    private List<Order> orderList;
     private static OrderStructure instance = null;
 
     public static OrderStructure get()

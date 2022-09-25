@@ -13,14 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 public class FragmentUserOrders extends Fragment {
 
     RecyclerView recyclerView;
-    public static OrderStructure dataHolder = OrderStructure.get();
+    public static OrderStructure pastOrders = FragmentLogin.USER.getOrders();
 
     public FragmentUserOrders() {
         // Required empty public constructor
-    }
-
-    public static FragmentUserOrders newInstance() {
-        return new FragmentUserOrders();
     }
 
     @Override
@@ -35,11 +31,11 @@ public class FragmentUserOrders extends Fragment {
         View view = inflater.inflate(R.layout.fragment_orders, container, false);
         recyclerView = view.findViewById(R.id.orderRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(new AdaptorOrders(dataHolder));
+        recyclerView.setAdapter(new AdaptorOrders(pastOrders));
 
         return view;
     }
 
-    public static OrderStructure getDataHolder() {return dataHolder;}
+    public static OrderStructure getUserOrders() {return pastOrders;}
 
 }
