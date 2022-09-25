@@ -13,7 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class AdaptorOrders extends RecyclerView.Adapter<AdaptorOrders.MyViewHolder>
 {
-    public static OrderStructure dataHolder;
+    UserDBModel userDBModel = new UserDBModel();
+
+
+    public static OrderStructure dataHolder = FragmentLogin.USER.getOrders();
 
     public AdaptorOrders(OrderStructure dataHolder)
     {

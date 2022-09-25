@@ -10,6 +10,6 @@
         android:id="@+id/checkoutTag"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Checkout" />
+        android:text="No Orders Placed" />
 
 </FrameLayout>

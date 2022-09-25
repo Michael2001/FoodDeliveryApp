@@ -33,4 +33,12 @@ public class User {
     }
 
     public void setOrders(OrderStructure orders) {this.orders = orders; }
+
+    public void addOrder(Order order) {
+        if(getOrders() == null) {
+            setOrders(new OrderStructure());
+        }
+        getOrders().add(order);
+    }
+
 }

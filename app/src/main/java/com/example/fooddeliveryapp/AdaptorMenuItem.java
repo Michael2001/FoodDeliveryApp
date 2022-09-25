@@ -1,6 +1,5 @@
 package com.example.fooddeliveryapp;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -150,9 +149,6 @@ public class AdaptorMenuItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
             super(view);
             restaurantName = (TextView) view.findViewById(R.id.restaurantHeaderName);
             restaurantImg = (ImageView) view.findViewById(R.id.restaurantHeaderImage);
-
         }
-
     }
-
 }

@@ -41,41 +41,43 @@ public class FragmentCheckout extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         cart = new Cart();
-        View view = inflater.inflate(R.layout.template_cart, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.checkoutRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(new AdaptorCart(cart));
+        View view;
 
-        userDBModel = new UserDBModel();
-        userDBModel.load(getContext());
+        if(cart.getCartItems().size() != 0) {
+            view = inflater.inflate(R.layout.template_cart, container, false);
+            RecyclerView recyclerView = view.findViewById(R.id.checkoutRecyclerView);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+            recyclerView.setAdapter(new AdaptorCart(cart));
 
-        Button checkoutButton = (Button)view.findViewById(R.id.checkout);
+            userDBModel = new UserDBModel();
+            userDBModel.load(getContext());
 
-        checkoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                //Create an order with the current userName and date
-                Date date = new Date();
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
-                String dateStr = formatter.format(date);
-                if (cart!=null){
-                    //get current User, and pass user to the order
-                    Order orderNew = new Order(user.getEmail(), dateStr, cart.getCartItems());
+            Button checkoutButton = (Button)view.findViewById(R.id.checkout);
 
-                    if(FragmentUserOrders.getUserOrders() != null) {
+            checkoutButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view){
+                    //Create an order with the current userName and date
+                    Date date = new Date();
+                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+                    String dateStr = formatter.format(date);
+                    if (cart!=null){
+                        //get current User, and pass user to the order
+                        Order orderNew = new Order(user.getEmail(), dateStr, cart.getCartItems());
+
                         FragmentUserOrders.getUserOrders().add(orderNew);
-                    } else {
-                        OrderStructure orderStructure = new OrderStructure();
-                        orderStructure.add(orderNew);
-                        user.setOrders(orderStructure);
+
+                        String userOrders = objToString(FragmentLogin.USER.getOrders());
+                        userDBModel.updateUser(FragmentLogin.USER.getId(), FragmentLogin.USER.getEmail(), FragmentLogin.USER.getPassword(), userOrders);
+
                     }
-
-                    String userOrders = objToString(FragmentLogin.USER.getOrders());
-
-                    userDBModel.updateUser(FragmentLogin.USER.getId(), FragmentLogin.USER.getEmail(), FragmentLogin.USER.getPassword(), userOrders);
                 }
-            }
-        });
+            });
+        } else {
+            view = inflater.inflate(R.layout.fragment_no_cart, container, false);
+        }
+
+
 
         return view;
     }

@@ -5,16 +5,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 
 public class FragmentUserOrders extends Fragment {
 
     RecyclerView recyclerView;
     public static OrderStructure dataHolder = FragmentLogin.USER.getOrders();
+
+
 
     public FragmentUserOrders() {
         // Required empty public constructor
@@ -41,15 +48,20 @@ public class FragmentUserOrders extends Fragment {
             recyclerView = view.findViewById(R.id.orderRecyclerView);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
             recyclerView.setAdapter(new AdaptorOrders(dataHolder));
-
-            Log.d("TAG", String.valueOf(dataHolder.size()));
         } else {
-            view = inflater.inflate(R.layout.fragment_checkout, container, false);
+            view = inflater.inflate(R.layout.fragment_no_orders, container, false);
         }
 
         return view;
     }
 
-    public static OrderStructure getUserOrders() {return dataHolder;}
+    public static OrderStructure getUserOrders() {
+        if(dataHolder == null) {
+            dataHolder = new OrderStructure();
+            FragmentLogin.USER.setOrders(dataHolder);
+        }
+
+        return dataHolder;
+    }
 
 }
