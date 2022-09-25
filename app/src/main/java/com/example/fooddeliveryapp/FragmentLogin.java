@@ -111,7 +111,7 @@ public class FragmentLogin extends Fragment implements View.OnClickListener {
                     USER.setPassword(user.getPassword());
                     USER.setOrders(user.getOrders());
 
-                    FragmentCheckout fragmentCheckout = new FragmentCheckout(USER);
+                    FragmentCheckout fragmentCheckout = new FragmentCheckout();
                     FragmentManager fragmentManager = getFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.addToBackStack("xyz");

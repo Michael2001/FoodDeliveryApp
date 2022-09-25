@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                             if(LOGGED == false){
                                 selectedFragment = new FragmentLogin();
                             } else {
-                                selectedFragment = new FragmentCheckout(FragmentLogin.USER);
+                                selectedFragment = new FragmentCheckout();
                             }
                             break;
                         case R.id.orders:

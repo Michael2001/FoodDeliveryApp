@@ -27,7 +27,7 @@ public class FragmentCheckout extends Fragment {
     private User user;
     private UserDBModel userDBModel;
 
-    public FragmentCheckout(User user) {
+    public FragmentCheckout() {
         this.user = FragmentLogin.USER;
     }
 
@@ -70,7 +70,7 @@ public class FragmentCheckout extends Fragment {
                         user.setOrders(orderStructure);
                     }
 
-                    String userOrders = objToString(FragmentUserOrders.getUserOrders());
+                    String userOrders = objToString(FragmentLogin.USER.getOrders());
 
                     userDBModel.updateUser(FragmentLogin.USER.getId(), FragmentLogin.USER.getEmail(), FragmentLogin.USER.getPassword(), userOrders);
                 }
