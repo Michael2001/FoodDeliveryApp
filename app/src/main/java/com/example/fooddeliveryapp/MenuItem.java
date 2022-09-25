@@ -44,5 +44,4 @@ public class MenuItem implements Serializable
     public void setPrice(String inPrice){this.foodPrice = inPrice;}
     public void setId(int id) {this.id=id;}
     public int getId() {return id;}
-
 }

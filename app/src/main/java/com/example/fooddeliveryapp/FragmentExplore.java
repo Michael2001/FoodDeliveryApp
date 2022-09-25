@@ -38,8 +38,6 @@ public class FragmentExplore extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(new AdapatorRestaurant(dataHolder));
 
-
-
         return view;
     }
 

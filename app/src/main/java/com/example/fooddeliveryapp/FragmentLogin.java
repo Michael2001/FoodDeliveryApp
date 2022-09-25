@@ -118,8 +118,6 @@ public class FragmentLogin extends Fragment implements View.OnClickListener {
                     fragmentTransaction.hide(FragmentLogin.this);
                     fragmentTransaction.add(R.id.fragment_container, fragmentCheckout);
                     fragmentTransaction.commit();
-
-                    Log.d("TAG", "SUCCESS");
                 }
                 else {
                     Toast toast =  Toast.makeText(getContext(), "Invalid Login Details!", Toast.LENGTH_SHORT);

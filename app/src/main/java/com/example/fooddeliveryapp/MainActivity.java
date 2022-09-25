@@ -7,9 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     public static boolean LOGGED = false;
+    public List<Restaurant> restaurantData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

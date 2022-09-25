@@ -6,10 +6,7 @@ import java.util.List;
 
 public class RestaurantStructure {
     private List<Restaurant> restaurantList;
-
-
     private static RestaurantStructure instance = null;
-
     public static RestaurantStructure get()
     {
         if(instance == null)

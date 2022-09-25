@@ -76,9 +76,6 @@ public class FragmentCheckout extends Fragment {
         } else {
             view = inflater.inflate(R.layout.fragment_no_cart, container, false);
         }
-
-
-
         return view;
     }
 
