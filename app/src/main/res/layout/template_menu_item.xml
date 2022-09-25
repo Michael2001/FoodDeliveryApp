@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/foodImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/foodName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Food Name"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/foodImage"
+        app:layout_constraintTop_toTopOf="@+id/foodImage" />
+
+    <TextView
+        android:id="@+id/foodDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="This is an example of the food description. Please write a breif desciption."
+        app:layout_constraintBottom_toTopOf="@+id/foodPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/foodImage"
+        app:layout_constraintTop_toBottomOf="@+id/foodName" />
+
+    <TextView
+        android:id="@+id/foodPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="$13.50"
+        app:layout_constraintBottom_toBottomOf="@+id/foodImage"
+        app:layout_constraintStart_toEndOf="@+id/foodImage" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodDescription">
+
+
+        <Button
+            android:id="@+id/minus"
+            android:layout_width="48dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/round_button"
+            android:text="-"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@+id/minus"
+            app:layout_constraintStart_toEndOf="@+id/minus"
+            app:layout_constraintTop_toTopOf="@+id/minus" />
+
+        <Button
+            android:id="@+id/plus"
+            android:layout_width="48dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/round_button"
+            android:text="+"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/minus"
+            app:layout_constraintStart_toEndOf="@+id/count"
+            app:layout_constraintTop_toTopOf="@+id/minus" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/special"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/foodImage"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
